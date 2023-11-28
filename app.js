@@ -14,7 +14,7 @@ async function getQuote() {
     btn.innerText = 'Get me a quote';
 
     showQuote.textContent = quote.content;
-    author.textContent = `- ${quote.author}`;
+    author.textContent = `~ ${quote.author}`;
   } catch (error) {
     showQuote.style.color = 'red';
     showQuote.textContent = 'Ohhh.. the site has hit a snag';
