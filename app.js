@@ -4,14 +4,15 @@ const author = document.getElementById('author');
 
 async function getQuote() {
   try {
-    showQuote.textContent = 'Updating...';
-    btn.disabled = true;
     btn.innerText = 'Loading...';
+    btn.disabled = true;
+    showQuote.textContent = 'Loading...';
+    author.textContent = 'Updating...';
     const response = await fetch('https://api.quotable.io/random');
     const quote = await response.json();
 
     btn.disabled = false;
-    btn.innerText = 'Get me a quote';
+    btn.innerText = 'GET A QUOTE';
 
     showQuote.textContent = quote.content;
     author.textContent = `~ ${quote.author}`;
@@ -19,11 +20,13 @@ async function getQuote() {
     showQuote.style.color = 'red';
     showQuote.textContent = 'Ohhh.. the site has hit a snag';
     btn.disabled = false;
-    btn.innerText = 'GET QUOTE';
+    btn.innerText = 'GET A QUOTE';
   }
 
   console.log(quote.content);
   console.log(`- ${quote.author}`);
 }
+
+getQuote();
 
 btn.addEventListener('click', getQuote);
